@@ -76,7 +76,6 @@ long generateHash(const char* key) {
     long hash = 0;
     long mult = 0x3e;
     long counter = 0;
-    long prefix = 0xff;
     for(int i=0; i<strlen(key); i++) {
         counter += (mult >> i) * key[i];
         hash += counter % 1000;
