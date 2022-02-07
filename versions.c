@@ -31,11 +31,11 @@ const char* getVersion(const char* version) {
         case 2521:
         case 3373:
             return "Aspen"; break;
-        case 12583:
-        case 12551:
-            return "2020.2"; break;
         case 5555:
         case 5395:
+            return "2020.2"; break;
+        case 3374:
+        case 2524:
             return "Buttertubs"; break; 
         case 4569:
         case 4377:
@@ -67,6 +67,32 @@ const char* getVersion(const char* version) {
         case 2541:
         case 3396:
             return "Galibier"; break; 
+        case 3397:
+        case 2544:
+            return "Hautacam"; break; 
+        case 2812:
+        case 2684:
+            return "2021.4"; break; 
+        case 3415:
+        case 2549:
+            return "Iseran"; break; 
+        case 3127:
+        case 3031:
+            return "2022.1"; break; 
+        case 3416:
+        case 2552:
+            return "Joux-Plane"; break; 
+        case 6979:
+        case 7139:
+        case 3257:
+        case 3113:
+            return "2022.2"; break; 
+        case 6769:
+        case 6609:
+            return "2022.3"; break;
+        case 3417:
+        case 2555:
+            return "Koldingvej"; break;
         
     }
     return "Unknown";
