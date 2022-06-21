@@ -93,7 +93,37 @@ const char* getVersion(const char* version) {
         case 3417:
         case 2555:
             return "Koldingvej"; break;
-        
+        case 7141:
+        case 3140:
+        case 3708:
+        case 7813:
+        case 7637:
+        case 3548:
+        case 2980:
+        case 6965:
+            return "2022.4/2.2023.1"; break;
+        case 3418: //2022.4
+        case 2558: //20224
+        case 3436: //2023.1
+        case 2563: //20231
+            return "Luz-Ardiden"; break;
+
+        /* Future versions:
+        Madeleine
+        Noyer
+        Ordino
+        La Plagne
+        Queige
+        Risoul
+        Sestriere
+        Tourmalet
+        Côte de Saint-Martin-d'Uriage / ???
+        Ventoux
+        W
+        Ax-3 Domaines
+        Y
+        */
+
     }
     return "Unknown";
 }
