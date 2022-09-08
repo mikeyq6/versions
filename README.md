@@ -3,6 +3,8 @@ A small tool to identify version numbers and names of Singletrack Core releases
 
 To use, clone the repository and run `make`
 
+Add a reference to it in your PATH variable or copy it to `/usr/local/bin/` to make it available everywhere
+
 Usage:
 
 ```versions [name]```
