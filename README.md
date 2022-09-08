@@ -12,3 +12,9 @@ eg:
 `versions Galibier`
 
 `Version for Galibier is '2021.3'`
+
+or in reverse:
+
+`versions 2022.1` or `versions 20221`
+
+`Version for 2022.1 is 'Iseran'`
