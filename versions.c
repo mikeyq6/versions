@@ -1,8 +1,14 @@
-#include "versions.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
-int main(int argc, char** argv) {
+#include "argparse.h"
+#include "versions.h"
+
+static const char *const usages[] = {
+     "versions [options] [[--] args] ",
+     NULL,
+ };
 static const char *const allVersions[] = {
     "2020.1 Aspen",
     "2020.2 Buttertubs",
@@ -22,21 +28,41 @@ static const char *const allVersions[] = {
     "2024.1 La Plagne"
 };
 
+int main(int argc, const char** argv) {
     int showHash = 0;
-    char* version;
     int showAll = 0;
+    char* version = malloc(1000);
+    version[0] = '\0';
 
-    if(argc < 2) {
-        printf("Usage: %s [name]\n", argv[0]);
+    struct argparse_option options[] = {
+        OPT_HELP(),
+        OPT_GROUP("Basic options"),
+        OPT_BOOLEAN('s', "show-hash", &showHash, "display generated hash", NULL, 0, 0),
+        OPT_BOOLEAN('a', "all", &showAll, "show all versions", NULL, 0, 0),
+        OPT_END(),
+    };
+    struct argparse argparse;
+    argparse_init(&argparse, options, usages, 0);
+    argparse_describe(&argparse, "\nDisplay the version number for the given name, or the given name for the version number.", "\n");
+    argc = argparse_parse(&argparse, argc, argv);
+
     if(showAll) {
         showAllVersions();
         return 0;
     }
+    if(argc == 0) {
+        printf("versions [options] [[--] args]\n");
         return 1;
-    } else if (strcmp(argv[1], "-h") == 0) {
-        showHash = 1;
     }
-    version = argv[argc-1];
+
+    for(int i=0; i<argc; i++) {
+//        printf("version=\"%s\", argv[%d]=\"%s\"\n", version, i, argv[i]);
+        if(version[0] == '\0') {
+            sprintf(version, "%s", argv[i]);
+        } else {
+            sprintf(version, "%s %s", version, argv[i]);
+        }
+    }
 
     printf("Version for %s is '%s'\n", version, getVersion(version));
 
@@ -44,6 +70,7 @@ static const char *const allVersions[] = {
         printf("Hash for %s=%ld\n", version, generateHash(version));
     }
 
+    free(version);
     return 0;
 }
 
@@ -70,57 +97,57 @@ const char* getVersion(const char* version) {
             return "2020.2"; break;
         case 3374:
         case 2524:
-            return "Buttertubs"; break; 
+            return "Buttertubs"; break;
         case 4569:
         case 4377:
             return "2020.3"; break;
         case 2527:
         case 3375:
-            return "Croix de fer"; break; 
+            return "Croix de fer"; break;
         case 1598:
         case 1678:
             return "2020.4"; break;
         case 2530:
         case 3376:
-            return "Donon"; break; 
+            return "Donon"; break;
         case 4701:
         case 4557:
             return "2021.1"; break;
         case 2535:
         case 3394:
-            return "Entremont"; break; 
+            return "Entremont"; break;
         case 3944:
         case 4088:
             return "2021.2"; break;
         case 3395:
         case 2538:
-            return "Firstplan"; break; 
+            return "Firstplan"; break;
         case 2151:
         case 2023:
             return "2021.3"; break;
         case 2541:
         case 3396:
-            return "Galibier"; break; 
+            return "Galibier"; break;
         case 3397:
         case 2544:
-            return "Hautacam"; break; 
+            return "Hautacam"; break;
         case 2812:
         case 2684:
-            return "2021.4"; break; 
+            return "2021.4"; break;
         case 3415:
         case 2549:
-            return "Iseran"; break; 
+            return "Iseran"; break;
         case 3127:
         case 3031:
-            return "2022.1"; break; 
+            return "2022.1"; break;
         case 3416:
         case 2552:
-            return "Joux-Plane"; break; 
+            return "Joux-Plane"; break;
         case 6979:
         case 7139:
         case 3257:
         case 3113:
-            return "2022.2"; break; 
+            return "2022.2"; break;
         case 6769:
         case 6609:
             return "2022.3"; break;
@@ -135,9 +162,7 @@ const char* getVersion(const char* version) {
         case 3548:
         case 2980:
         case 6965:
-            return "2022.4/2.2023.1"; break;
-        case 3418: //2022.4
-        case 2558: //20224
+            return "2023.1"; break;
         case 3436: //2023.1
         case 2563: //20231
             return "Luz-Ardiden"; break;
