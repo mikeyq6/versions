@@ -3,11 +3,35 @@
 #include <string.h>
 
 int main(int argc, char** argv) {
+static const char *const allVersions[] = {
+    "2020.1 Aspen",
+    "2020.2 Buttertubs",
+    "2020.3 Croix de fer",
+    "2020.4 Donon",
+    "2021.1 Entremont",
+    "2021.2 Firstplan",
+    "2021.3 Galibier",
+    "2021.4 Hautacam",
+    "2022.1 Iseran",
+    "2022.2 Joux-Plane",
+    "2022.3 Koldingvej",
+    "2023.1 Luz-Ardiden",
+    "2023.2 Madeleine",
+    "2023.3 Noyer",
+    "2023.4 Ordino",
+    "2024.1 La Plagne"
+};
+
     int showHash = 0;
     char* version;
+    int showAll = 0;
 
     if(argc < 2) {
         printf("Usage: %s [name]\n", argv[0]);
+    if(showAll) {
+        showAllVersions();
+        return 0;
+    }
         return 1;
     } else if (strcmp(argv[1], "-h") == 0) {
         showHash = 1;
@@ -21,6 +45,16 @@ int main(int argc, char** argv) {
     }
 
     return 0;
+}
+
+void showAllVersions() {
+    int listLen = (int)sizeof(allVersions) / sizeof(allVersions[0]);
+    printf("All versions:\n");
+
+    for(int i=0; i<listLen; i++) {
+        printf("%s\n", allVersions[i]);
+    }
+    printf("\n");
 }
 
 const char* getVersion(const char* version) {
