@@ -141,12 +141,37 @@ const char* getVersion(const char* version) {
         case 3436: //2023.1
         case 2563: //20231
             return "Luz-Ardiden"; break;
+        case 3437: // 2023.2
+        case 2566: // 2566
+            return "Madeleine"; break;
+        case 4788: // Madeleine
+        case 4804: // Madeliene
+        case 4660: // madeliene
+        case 4664: // madeleine
+            return "2023.2"; break;
+        case 2145: // Noyer
+        case 2065: // noyer
+            return "2023.3"; break;
+        case 3438: // 2023.3
+        case 2569: // 20233
+            return "Noyer"; break;
+        case 4034: // Ordino
+            return "2023.4"; break;
+        case 3439: // 2023.4
+        case 2572: // 20234
+            return "Ordino"; break;
+        case 3192: // La Plagne
+        case 4536: // La plagne
+        case 4392: // la plagne
+        case 3048: // la Plagne
+            return "2024.1"; break;
+        case 3457: // 2024.1
+        case 2577: // 20241
+            return "La Plagne"; break;
+
+
 
         /* Future versions:
-        Madeleine
-        Noyer
-        Ordino
-        La Plagne
         Queige
         Risoul
         Sestriere
